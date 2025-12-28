@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <nav class="navbar bg-body-tertiary">
+                <nav class="bg-body-tertiary">
                     <div class="container">
                         <a class="navbar-brand" href="#">
                             <img src="logo.png" alt="LibertyArm" width="50" height="50"> LibertyArm
@@ -31,27 +31,30 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Acceuil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Discord</a>
-                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Notre Catalogue
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Armes de Poing</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="pistol.html">Pistolets</a></li>
+                                <li><a class="dropdown-item" href="assault.html">Fusils d’assaut</a></li>
+                                <li><a class="dropdown-item" href="shootgun.html">Fusils à pompe</a></li>
+                                <li><a class="dropdown-item" href="sniper.html">Fusils de précision</a></li>
+                                <li><a class="dropdown-item" href="smg.html">Pistolets-mitrailleurs</a></li>
+                                <li><a class="dropdown-item" href="other.html">Accessoires</a></li>
+
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="commander.html">Something else here</a></li>
+                                <li><a class="dropdown-item" href="commander.html">Passer Commande</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true" href="commander.html">Disabled</a>
+                            <a class="nav-link active" aria-disabled="true" href="commander.html">Commander</a>
                         </li>
                     </ul>
                 </div>
@@ -69,54 +72,235 @@
             }
         </style>
 
+        <div class="container mt-5">
+        </div>
+
+
+        <div class="fs-1 text-center">
+            Fusils de précision</div>
+        <span class="border"></span>
+
         <div class="container">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
 
-
-            <div class="fs-1 ; text-center">
-                Fusil D'assault</div>
-            <span class="border"></span>
-
-            <div class="container mt-5">
-            </div>
-
-            <!-- ACR -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="arc.png" class="card-img-top" alt="arc">
-                    <div class="card-body">
-                        <h5 class="card-title"> Sniper Warface </h5>
-                        <p class="card-text">Le sniper Warface est un fusil de précision conçu pour les tirs à
-                            longue distance. Il privilégie une très grande précision et des dommages élevés, mais
-                            nécessite une bonne maîtrise en raison de sa faible mobilité et de sa cadence de tir
-                            réduite.
-
+                <!-- Kel-Tec RFB -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/kel-tec-rfb.png" class="card-img-top" alt="Kel-Tec RFB">
+                        <div class="card-body">
+                            <h5 class="card-title">Kel-Tec RFB</h5>
+                            <p class="card-text">Fusil sniper bullpup de conception moderne, reconnu pour sa très haute
+                                précision et sa puissance élevée. Compact pour un calibre lourd, il reste stable et
+                                efficace à longue distance, tout en conservant une mobilité correcte pour un sniper.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.12°</li>
+                            <li class="list-group-item">Précision sans visée : 3.03°</li>
+                            <li class="list-group-item">Cadence de tir : 260 CPM</li>
+                            <li class="list-group-item">Mobilité : 85%</li>
+                            <li class="list-group-item">Dommages : 65</li>
+                            <li class="list-group-item">Stabilité : 71%</li>
+                            <li class="list-group-item">Calibre : 7.62×51 mm NATO</li>
+                            <li class="list-group-item">Type de balle : FMJ (Full Metal Jacket)</li>
+                            <li class="list-group-item">Marque de munitions : Sellier & Bellot</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Précision sans visée | Moyenne (6/10)</li>
-                        <li class="list-group-item">Cadence de tir | Faible (4/10)</li>
-                        <li class="list-group-item">Mobilité | Faible (4/10)</li>
-                        <li class="list-group-item">Dommages : Très élevés (9/10)</li>
-                        <li class="list-group-item">Stabilité : Excellente (9/10)</li>
+                </div>
 
-                        <li class="list-group-item">Calibre : 5.56×45 mm NATO</li>
-                        <li class="list-group-item">Mode de tir : Semi-automatique / Automatique</li>
-                        <li class="list-group-item">Portée efficace : Moyenne à longue</li>
-                    </ul>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">Prix Hors TVA :</small>
-                        <spam type="button" class="btn btn-success text-center">$16.000</spam>
+                <!-- M40A1 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/m40a1.png" class="card-img-top" alt="M40A1">
+                        <div class="card-body">
+                            <h5 class="card-title">M40A1</h5>
+                            <p class="card-text">Le M40A1 est un fusil de précision militaire basé sur le Remington 700,
+                                conçu pour le tir longue distance avec une extrême précision. Il a été utilisé par des
+                                tireurs d’élite pour sa fiabilité, sa robustesse et sa capacité à placer des tirs très
+                                précis en conditions difficiles. C’est une arme faite pour les engagements lointains, où
+                                chaque balle compte.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.01°</li>
+                            <li class="list-group-item">Précision sans visée : 6.88°</li>
+                            <li class="list-group-item">Cadence de tir : 50 CPM</li>
+                            <li class="list-group-item">Mobilité : 85%</li>
+                            <li class="list-group-item">Dommages : 160</li>
+                            <li class="list-group-item">Stabilité : 32%</li>
+                            <li class="list-group-item">Calibre : 7.62×51mm NATO (.308 Winchester)</li>
+                            <li class="list-group-item">Marque de munitions : Federal Gold Medal Match</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M82A1 CQ -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/m82a1-cq.png" class="card-img-top" alt="M82A1 CQ">
+                        <div class="card-body">
+                            <h5 class="card-title">M82A1 CQ</h5>
+                            <p class="card-text">Le M82A1 CQ est une version plus compacte du célèbre Barrett M82,
+                                conçue pour des engagements puissants à moyenne et longue distance. Ce fusil est réputé
+                                pour sa force de frappe extrême, sa capacité à neutraliser des cibles très résistantes
+                                et son fonctionnement semi-automatique, rare pour une arme de ce calibre. Il est souvent
+                                utilisé quand il faut combiner puissance brute et rapidité de tir.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.01°</li>
+                            <li class="list-group-item">Précision sans visée : 3.26°</li>
+                            <li class="list-group-item">Cadence de tir : 175 CPM</li>
+                            <li class="list-group-item">Mobilité : 78%</li>
+                            <li class="list-group-item">Dommages : —</li>
+                            <li class="list-group-item">Stabilité : 22%</li>
+                            <li class="list-group-item">Calibre : .50 BMG (12.7×99mm)</li>
+                            <li class="list-group-item">Marque de munitions : Hornady Match</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKS -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/sks.png" class="card-img-top" alt="SKS">
+                        <div class="card-body">
+                            <h5 class="card-title">SKS</h5>
+                            <p class="card-text">Le SKS est un fusil semi-automatique conçu à l’origine pour
+                                l’infanterie, connu pour sa fiabilité exceptionnelle et sa simplicité mécanique. Il est
+                                apprécié pour sa précision correcte, sa stabilité élevée et sa capacité à enchaîner les
+                                tirs rapidement. C’est une arme polyvalente, efficace à moyenne distance et très facile
+                                à prendre en main.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.96°</li>
+                            <li class="list-group-item">Précision sans visée : 1.61°</li>
+                            <li class="list-group-item">Cadence de tir : 600 CPM</li>
+                            <li class="list-group-item">Mobilité : 85%</li>
+                            <li class="list-group-item">Dommages : 72</li>
+                            <li class="list-group-item">Stabilité : 88%</li>
+                            <li class="list-group-item">Calibre : 7.62×39mm</li>
+                            <li class="list-group-item">Marque de munitions : Wolf Military Classic</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remington M24A1 SWS -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/remington-m24a1-sws.png" class="card-img-top"
+                            alt="Remington M24A1 SWS">
+                        <div class="card-body">
+                            <h5 class="card-title">Remington M24A1 SWS</h5>
+                            <p class="card-text">Le Remington M24A1 SWS (Sniper Weapon System) est un fusil de précision
+                                militaire reconnu pour sa précision extrême et sa fiabilité sur de longues distances.
+                                Conçu pour des tirs précis et constants, il est apprécié pour sa stabilité améliorée et
+                                sa capacité à neutraliser des cibles avec très peu de marge d'erreur. C’est une arme
+                                pensée pour les tireurs patients et méthodiques.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.02°</li>
+                            <li class="list-group-item">Précision sans visée : 1.24°</li>
+                            <li class="list-group-item">Cadence de tir : 300 CPM</li>
+                            <li class="list-group-item">Mobilité : 87%</li>
+                            <li class="list-group-item">Dommages : 160</li>
+                            <li class="list-group-item">Stabilité : 52%</li>
+                            <li class="list-group-item">Calibre : 7.62×51mm NATO (.308 Winchester)</li>
+                            <li class="list-group-item">Marque de munitions : Federal Gold Medal Match</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barrett M98B -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/barrett-m98b.png" class="card-img-top" alt="Barrett M98B">
+                        <div class="card-body">
+                            <h5 class="card-title">Barrett M98B</h5>
+                            <p class="card-text">Le Barrett M98B est un fusil de précision à verrou conçu pour le tir
+                                longue distance avec une précision extrême. Il est reconnu pour sa conception moderne,
+                                sa robustesse et sa capacité à délivrer des tirs très puissants et constants. Pensé pour
+                                les engagements à très longue portée, il combine fiabilité, stabilité et performance
+                                balistique élevée.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.01°</li>
+                            <li class="list-group-item">Précision sans visée : 6.05°</li>
+                            <li class="list-group-item">Cadence de tir : 180 CPM</li>
+                            <li class="list-group-item">Mobilité : 83%</li>
+                            <li class="list-group-item">Dommages : 191</li>
+                            <li class="list-group-item">Stabilité : 73%</li>
+                            <li class="list-group-item">Calibre : .338 Lapua Magnum</li>
+                            <li class="list-group-item">Marque de munitions : Lapua Scenar</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accuracy International AWM -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="fusil-precision/accuracy-international-awm.png" class="card-img-top"
+                            alt="Accuracy International AWM">
+                        <div class="card-body">
+                            <h5 class="card-title">Accuracy International AWM</h5>
+                            <p class="card-text">L’Accuracy International AWM (Arctic Warfare Magnum) est un fusil de
+                                précision haut de gamme conçu pour les environnements extrêmes et le tir à très longue
+                                distance. Il est réputé pour sa précision exceptionnelle, sa fiabilité par tous les
+                                temps et sa conception robuste. C’est une arme utilisée par des tireurs d’élite
+                                exigeants qui recherchent des performances constantes et une grande qualité de
+                                fabrication.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Précision : 0.01°</li>
+                            <li class="list-group-item">Précision sans visée : 2.02°</li>
+                            <li class="list-group-item">Cadence de tir : 165 CPM</li>
+                            <li class="list-group-item">Mobilité : 90%</li>
+                            <li class="list-group-item">Dommages : 175</li>
+                            <li class="list-group-item">Stabilité : 37%</li>
+                            <li class="list-group-item">Calibre : .338 Lapua Magnum</li>
+                            <li class="list-group-item">Marque de munitions : Lapua Scenar</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60.000</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
         </div>
 
-
+        <div class="container mt-5">
+        </div>
 
     </main>
-    <footer>
+    <footer class="mt-auto bg-light text-center py-3">
+        <small>
+            Ce site est destiné exclusivement à un usage de rôleplay (RP).
+            Tous les contenus présentés sont fictifs, aucune information n’est réelle
+            et ce site n’a aucun but commercial.
+        </small>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <nav class="navbar bg-body-tertiary">
+                <nav class="bg-body-tertiary">
                     <div class="container">
                         <a class="navbar-brand" href="#">
                             <img src="logo.png" alt="LibertyArm" width="50" height="50"> LibertyArm
@@ -31,27 +31,30 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Acceuil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Discord</a>
-                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Notre Catalogue
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Armes de Poing</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="pistol.html">Pistolets</a></li>
+                                <li><a class="dropdown-item" href="assault.html">Fusils d’assaut</a></li>
+                                <li><a class="dropdown-item" href="shootgun.html">Fusils à pompe</a></li>
+                                <li><a class="dropdown-item" href="sniper.html">Fusils de précision</a></li>
+                                <li><a class="dropdown-item" href="smg.html">Pistolets-mitrailleurs</a></li>
+                                <li><a class="dropdown-item" href="other.html">Accessoires</a></li>
+
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="commander.html">Something else here</a></li>
+                                <li><a class="dropdown-item" href="commander.html">Passer Commande</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true" href="commander.html">Disabled</a>
+                            <a class="nav-link active" aria-disabled="true" href="commander.html">Commander</a>
                         </li>
                     </ul>
                 </div>
@@ -69,54 +72,205 @@
             }
         </style>
 
+        <div class="container mt-5">
+        </div>
+
+
+        <div class="fs-1 text-center">
+            Munitions & Accessoire</div>
+        <span class="border"></span>
+
         <div class="container">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
 
-
-            <div class="fs-1 ; text-center">
-                Fusil D'assault</div>
-            <span class="border"></span>
-
-            <div class="container mt-5">
-            </div>
-
-            <!-- ACR -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="arc.png" class="card-img-top" alt="arc">
-                    <div class="card-body">
-                        <h5 class="card-title"> Sniper Warface </h5>
-                        <p class="card-text">Le sniper Warface est un fusil de précision conçu pour les tirs à
-                            longue distance. Il privilégie une très grande précision et des dommages élevés, mais
-                            nécessite une bonne maîtrise en raison de sa faible mobilité et de sa cadence de tir
-                            réduite.
-
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Précision sans visée | Moyenne (6/10)</li>
-                        <li class="list-group-item">Cadence de tir | Faible (4/10)</li>
-                        <li class="list-group-item">Mobilité | Faible (4/10)</li>
-                        <li class="list-group-item">Dommages : Très élevés (9/10)</li>
-                        <li class="list-group-item">Stabilité : Excellente (9/10)</li>
-
-                        <li class="list-group-item">Calibre : 5.56×45 mm NATO</li>
-                        <li class="list-group-item">Mode de tir : Semi-automatique / Automatique</li>
-                        <li class="list-group-item">Portée efficace : Moyenne à longue</li>
-                    </ul>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">Prix Hors TVA :</small>
-                        <spam type="button" class="btn btn-success text-center">$16.000</spam>
+                <!-- Munitions Revolver .357 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="munitions/revolver-357.png" class="card-img-top" alt="Munitions Revolver .357">
+                        <div class="card-body">
+                            <h5 class="card-title">Munitions Revolver .357</h5>
+                            <p class="card-text">Calibre conçu pour revolvers. Boîtes robustes et sécurisées, assurant
+                                une bonne protection des munitions pendant le transport et le stockage. Conditionnement
+                                pratique, facile à ouvrir et à refermer. Munitions fiables et régulières, adaptées à un
+                                usage standard avec revolvers compatibles (.357 / Vertigole).</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Munition</li>
+                            <li class="list-group-item">Calibre : .357 Magnum</li>
+                            <li class="list-group-item">Utilisation : Revolvers</li>
+                            <li class="list-group-item">Conditionnement : Boîte sécurisée</li>
+                            <li class="list-group-item">Fiabilité : Élevée</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$100</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Sac à dos de transport -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="equipement/sac-a-dos.png" class="card-img-top" alt="Sac à dos de transport">
+                        <div class="card-body">
+                            <h5 class="card-title">Sac à dos de transport</h5>
+                            <p class="card-text">Sac à dos solide et résistant, conçu pour le transport de matériel.
+                                Compartiments multiples permettant une organisation efficace du contenu. Fermetures
+                                renforcées pour une meilleure sécurité. Bretelles ajustables et rembourrées pour un port
+                                confortable. Format pratique, adapté aux déplacements quotidiens.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Équipement de transport</li>
+                            <li class="list-group-item">Matériau : Résistant</li>
+                            <li class="list-group-item">Compartiments : Multiples</li>
+                            <li class="list-group-item">Sécurité : Fermetures renforcées</li>
+                            <li class="list-group-item">Confort : Bretelles ajustables et rembourrées</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$60</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte clé USB -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="equipement/usb-key.png" class="card-img-top" alt="Carte clé USB">
+                        <div class="card-body">
+                            <h5 class="card-title">Carte clé USB</h5>
+                            <p class="card-text">Support de stockage compact et pratique. Permet de sauvegarder et
+                                transférer des fichiers facilement. Format discret, facile à transporter. Compatible
+                                avec la majorité des appareils équipés d'un port USB.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Accessoire électronique</li>
+                            <li class="list-group-item">Fonction : Stockage de données</li>
+                            <li class="list-group-item">Format : Compact et discret</li>
+                            <li class="list-group-item">Compatibilité : USB universel</li>
+                            <li class="list-group-item">Transport : Facile et pratique</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$6</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Munitions de pompe -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="munitions/12-gauge.png" class="card-img-top" alt="Munitions de pompe">
+                        <div class="card-body">
+                            <h5 class="card-title">Munitions de pompe</h5>
+                            <p class="card-text">Munitions spécialement conçues pour les fusils à pompe, offrant une
+                                puissance élevée à courte distance. Leur recul important nécessite une bonne maîtrise de
+                                l'arme.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Munition</li>
+                            <li class="list-group-item">Calibre : 12 gauge</li>
+                            <li class="list-group-item">Utilisation : Fusils à pompe</li>
+                            <li class="list-group-item">Pénétration : Moyenne</li>
+                            <li class="list-group-item">Puissance : Élevée à courte distance</li>
+                            <li class="list-group-item">Recul : Élevé</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$200</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Munitions de SMG -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="munitions/smg.png" class="card-img-top" alt="Munitions de SMG">
+                        <div class="card-body">
+                            <h5 class="card-title">Munitions de SMG</h5>
+                            <p class="card-text">Munitions adaptées aux pistolets-mitrailleurs, offrant un bon équilibre
+                                entre pénétration et contrôle. Idéales pour le combat rapproché avec une précision
+                                satisfaisante.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Munition</li>
+                            <li class="list-group-item">Calibre : 9×19 mm / .45 ACP</li>
+                            <li class="list-group-item">Utilisation : Pistolets-mitrailleurs (SMG)</li>
+                            <li class="list-group-item">Pénétration : Moyenne</li>
+                            <li class="list-group-item">Précision : Bonne à courte distance</li>
+                            <li class="list-group-item">Recul : Modéré</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$200</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Munitions de fusil d'assaut -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="munitions/assault-rifle.png" class="card-img-top" alt="Munitions de fusil d'assaut">
+                        <div class="card-body">
+                            <h5 class="card-title">Munitions de fusil d'assaut</h5>
+                            <p class="card-text">Munitions polyvalentes pour fusils d'assaut, offrant une bonne
+                                pénétration et précision à différentes distances. Adaptées à une large gamme de
+                                situations de combat.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Munition</li>
+                            <li class="list-group-item">Calibre : 5.56×45 mm / 7.62×39 mm</li>
+                            <li class="list-group-item">Utilisation : Fusils d'assaut</li>
+                            <li class="list-group-item">Pénétration : Élevée</li>
+                            <li class="list-group-item">Précision : Bonne à moyenne et longue distance</li>
+                            <li class="list-group-item">Recul : Modéré à élevé selon le calibre</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$200</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Munitions de sniper -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="munitions/sniper.png" class="card-img-top" alt="Munitions de sniper">
+                        <div class="card-body">
+                            <h5 class="card-title">Munitions de sniper</h5>
+                            <p class="card-text">Munitions de haute précision conçues pour les fusils de précision.
+                                Offrent une pénétration exceptionnelle et une trajectoire stable sur de longues
+                                distances, avec un recul important nécessitant une bonne technique.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type : Munition</li>
+                            <li class="list-group-item">Calibre : 7.62×51 mm / .300 Win Mag / .338 Lapua</li>
+                            <li class="list-group-item">Utilisation : Fusils de précision (sniper)</li>
+                            <li class="list-group-item">Pénétration : Très élevée</li>
+                            <li class="list-group-item">Précision : Très élevée à longue distance</li>
+                            <li class="list-group-item">Recul : Élevé</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Prix Hors TVA :</small>
+                            <a class="btn btn-success text-center" href="commander.html">$300</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-
         </div>
         </div>
 
-
+        <div class="container mt-5">
+        </div>
 
     </main>
-    <footer>
+    <footer class="mt-auto bg-light text-center py-3">
+        <small>
+            Ce site est destiné exclusivement à un usage de rôleplay (RP).
+            Tous les contenus présentés sont fictifs, aucune information n’est réelle
+            et ce site n’a aucun but commercial.
+        </small>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -1,28 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <title>LibertyArm</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        body {
+            background-image: url(background.png);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container">
-                        <a class="navbar-brand" href="#">
-                            <img href="index.html" src="logo.png" alt="LibertyArm" width="50" height="50"> LibertyArm
-                        </a>
-                    </div>
-                </nav>
+                <a class="navbar-brand" href="#">
+                    <img src="logo.png" alt="Logo LibertyArm" width="50" height="50"> LibertyArm
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -31,9 +33,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Acceuil</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Accueil</a>
                         </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -41,63 +42,170 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="pistol.html">Pistolets</a></li>
-                                <li><a class="dropdown-item" href="assault.html">Fusils d’assaut</a></li>
-                                <li><a class="dropdown-item" href="pistol.html">Fusils à pompe</a></li>
+                                <li><a class="dropdown-item" href="assault.html">Fusils d'assaut</a></li>
+                                <li><a class="dropdown-item" href="shootgun.html">Fusils à pompe</a></li>
                                 <li><a class="dropdown-item" href="sniper.html">Fusils de précision</a></li>
                                 <li><a class="dropdown-item" href="smg.html">Pistolets-mitrailleurs</a></li>
                                 <li><a class="dropdown-item" href="other.html">Accessoires</a></li>
-
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="commander.html">Passer Commande</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-disabled="true" href="commander.html">Commander</a>
+                            <a class="nav-link" href="commander.html">Commander</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <main>
 
-        <style>
-            body {
-                background-image: url(background.png);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: 100% 100%;
-            }
-        </style>
-
+    <main class="py-4">
         <div class="container">
-
-
-            <div class="fs-1 ; text-center">
-                Bienvenu sur LibertyArm ! </div>
-            <span class="border"></span>
-
-            <div class="fs-5 text-center">
-                GUNSHOP LIBERTY ARMS est une entreprise spécialisée dans la fabrication et la distribution d’armes à
-                feu,
-                suivant un modèle inspiré des standards américains. Basée à Los Angeles, elle met en avant un
-                savoir‑faire
-                local et une production encadrée, offrant aux citoyens des équipements fiables accompagnés
-                d’informations
-                claires et transparentes.
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold">Bienvenue sur LibertyArm !</h1>
+                <hr class="my-4">
+                <p class="lead">
+                    GUNSHOP LIBERTY ARMS est une entreprise spécialisée dans la fabrication et la distribution d'armes à
+                    feu, suivant un modèle inspiré des standards américains. Basée à Los Angeles, elle met en avant un
+                    savoir‑faire local et une production encadrée, offrant aux citoyens des équipements fiables accompagnés
+                    d'informations claires et transparentes.
+                </p>
             </div>
 
-            <div class="container mt-5">
+            <div class="card mb-5">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="text-center mb-0">PODIUM DES VENTES !</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <!-- Glock 19 -->
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="pistol/glock19.png" class="card-img-top" alt="Glock 19 - Pistolet semi-automatique">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Glock 19</h5>
+                                    <p class="card-text flex-grow-1">
+                                        Pistolet semi‑automatique compact et polyvalent, le Glock 19 est
+                                        apprécié pour son équilibre entre précision, maniabilité et fiabilité. Il est
+                                        idéal pour les engagements rapprochés et le port discret.
+                                    </p>
+                                    <a class="btn btn-dark mb-2" data-bs-toggle="collapse" href="#collapseOne" role="button"
+                                        aria-expanded="false" aria-controls="collapseOne">
+                                        Informations
+                                    </a>
+                                    <div class="collapse" id="collapseOne">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Précision : 0.80°</li>
+                                            <li class="list-group-item">Précision sans visée : 1.49°</li>
+                                            <li class="list-group-item">Cadence de tir : 570 CPM</li>
+                                            <li class="list-group-item">Mobilité : 100%</li>
+                                            <li class="list-group-item">Dommages : 27</li>
+                                            <li class="list-group-item">Stabilité : 70%</li>
+                                            <li class="list-group-item">Munition : 9×19 mm Parabellum</li>
+                                            <li class="list-group-item">Mode de tir : Semi-automatique / Automatique</li>
+                                            <li class="list-group-item">Portée efficace : Moyenne à longue</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer mt-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small>Prix Hors TVA :</small>
+                                            <a class="btn btn-success" href="commander.html">$5.000</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SCAR-H SSR -->
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="assault/scar-ssr.png" class="card-img-top" alt="SCAR-H SSR - Fusil de précision">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">SCAR‑H SSR</h5>
+                                    <p class="card-text flex-grow-1">
+                                        Fusil de précision semi‑automatique de calibre lourd, le SCAR‑H SSR est
+                                        conçu pour les engagements à moyenne et longue distance. Il offre une précision
+                                        exceptionnelle et des dommages très élevés.
+                                    </p>
+                                    <a class="btn btn-dark mb-2" data-bs-toggle="collapse" href="#collapseTwo" role="button"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                        Informations
+                                    </a>
+                                    <div class="collapse" id="collapseTwo">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Précision : 0.14°</li>
+                                            <li class="list-group-item">Précision sans visée : 3.86°</li>
+                                            <li class="list-group-item">Cadence de tir : 550 CPM</li>
+                                            <li class="list-group-item">Mobilité : 81%</li>
+                                            <li class="list-group-item">Dommages : 40</li>
+                                            <li class="list-group-item">Stabilité : 82%</li>
+                                            <li class="list-group-item">Calibre : 7.62×51 mm NATO</li>
+                                            <li class="list-group-item">Mode de tir : Semi-automatique / Automatique</li>
+                                            <li class="list-group-item">Portée efficace : Moyenne à longue</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer mt-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small>Prix Hors TVA :</small>
+                                            <a class="btn btn-success" href="commander.html">$23.000</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SP AS-12 -->
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="fusil-a-pompe/sp-as-12.png" class="card-img-top" alt="SP AS-12 - Fusil à pompe">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">SP AS-12</h5>
+                                    <p class="card-text flex-grow-1">
+                                        Le SP AS‑12 est un fusil à pompe puissant et moderne, conçu pour le
+                                        combat rapproché. Il combine une bonne précision avec une mobilité correcte,
+                                        tout en infligeant de très lourds dégâts à courte distance.
+                                    </p>
+                                    <a class="btn btn-dark mb-2" data-bs-toggle="collapse" href="#collapseThree" role="button"
+                                        aria-expanded="false" aria-controls="collapseThree">
+                                        Informations
+                                    </a>
+                                    <div class="collapse" id="collapseThree">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Précision : 1.00°</li>
+                                            <li class="list-group-item">Précision sans visée : 2.86°</li>
+                                            <li class="list-group-item">Cadence de tir : Non précisé</li>
+                                            <li class="list-group-item">Mobilité : 90%</li>
+                                            <li class="list-group-item">Dommage : 122</li>
+                                            <li class="list-group-item">Stabilité : 30%</li>
+                                            <li class="list-group-item">Calibre : 12 gauge</li>
+                                            <li class="list-group-item">Marque de munitions : Sellier & Bellot</li>
+                                            <li class="list-group-item">Types de munitions : Chevrotine / Slug</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer mt-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small>Prix Hors TVA :</small>
+                                            <a class="btn btn-success" href="commander.html">$13.200</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-5 g-4">
+
+            <!-- Avis clients -->
+            <h2 class="text-center mb-4">Avis Clients</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 mb-5">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="empty.png" class="card-img-top" alt="empty" width="50">
                         <div class="card-body">
+                            <img src="empty.png" class="card-img-top" alt="empty">
                             <h5 class="card-title">Micheal "Mickey" Balboa</h5>
-                            <p class="card-text">Service rapide et discret. Le calibre recommandé était parfait pour mon... problème de rongeurs. Prix correct.</p>
+                            <p class="card-text">Service rapide et discret. Le calibre recommandé était parfait pour
+                                mon... problème de rongeurs. Prix correct.</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-body-secondary">Avis : ⭐⭐⭐⭐⭐</small>
@@ -106,10 +214,11 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="empty.png" class="card-img-top" alt="empty">
                         <div class="card-body">
+                            <img src="empty.png" class="card-img-top" alt="empty">
                             <h5 class="card-title">Vladimir P.</h5>
-                            <p class="card-text">Produits de qualité professionnelle, arrivés bien emballés et sans marquages. Le vendeur connaît son métier. Recommandé.</p>
+                            <p class="card-text">Produits de qualité professionnelle, arrivés bien emballés et sans
+                                marquages. Le vendeur connaît son métier. Recommandé.</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-body-secondary">Avis : ⭐⭐⭐⭐</small>
@@ -118,10 +227,11 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="empty.png" class="card-img-top" alt="empty">
                         <div class="card-body">
+                            <img src="empty.png" class="card-img-top" alt="empty">
                             <h5 class="card-title">Anna Laboss</h5>
-                            <p class="card-text">Commande pour mon club de tir. Matériel conforme, légal et bien entretenu. Livraison un peu longue mais correcte.</p>
+                            <p class="card-text">Commande pour mon club de tir. Matériel conforme, légal et bien
+                                entretenu. Livraison un peu longue mais correcte.</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-body-secondary">Avis : ⭐⭐⭐⭐⭐</small>
@@ -130,45 +240,49 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="empty.png" class="card-img-top" alt="empty" width="50">
                         <div class="card-body">
+                            <img src="empty.png" class="card-img-top" alt="empty">
                             <h5 class="card-title">Jim Raynor</h5>
-                            <p class="card-text">Les prix sont si bas qu'ils pourraient atteindre le centre de la terre, et une qualité si haute qu'elle irait sur Mars. TOP ! </p>
+                            <p class="card-text">Les prix sont si bas qu'ils pourraient atteindre le centre de la terre,
+                                et une qualité si haute qu'elle irait sur Mars. TOP !</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-body-secondary">Avis : ⭐⭐⭐⭐⭐</small>
                         </div>
                     </div>
                 </div>
-                
                 <div class="col">
                     <div class="card h-100">
-                        <img src="empty.png" class="card-img-top" alt="empty" width="50">
                         <div class="card-body">
+                            <img src="empty.png" class="card-img-top" alt="empty">
                             <h5 class="card-title">Martin Lutter</h5>
-                            <p class="card-text">J'ai trouvé la pièce rare dont j'avais besoin pour ma collection. Expertises pointues, pas de questions inutiles. Parfait.</p>
+                            <p class="card-text">J'ai trouvé la pièce rare dont j'avais besoin pour ma collection.
+                                Expertises pointues, pas de questions inutiles. Parfait.</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-body-secondary">Avis : ⭐⭐⭐⭐⭐</small>
                         </div>
                     </div>
                 </div>
-             </div>
-            <div class="container mt-5">
             </div>
+        </div>
     </main>
-    <footer>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <div class="container">
+            <small>
+                Ce site est destiné exclusivement à un usage de rôleplay (RP).
+                Tous les contenus présentés sont fictifs, aucune information n'est réelle
+                et ce site n'a aucun but commercial.
+            </small>
+        </div>
     </footer>
-    <!-- Bootstrap JavaScript Libraries -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 </body>
-
-
 </html>
-
