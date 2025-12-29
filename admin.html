@@ -121,13 +121,22 @@
             margin-right: 8px;
         }
         
-        .btn-download {
+        .btn-company {
             background-color: #9b59b6;
             margin-top: 15px;
         }
         
-        .btn-download:hover {
+        .btn-company:hover {
             background-color: #8e44ad;
+        }
+        
+        .btn-client {
+            background-color: #3498db;
+            margin-top: 15px;
+        }
+        
+        .btn-client:hover {
+            background-color: #2980b9;
         }
         
         .btn-copy {
@@ -361,7 +370,7 @@
             color: #2c3e50;
         }
         
-        /* Classes pour masquer les boutons lors de la capture */
+        /* Classes pour masquer les éléments lors de la capture */
         .capture-hidden {
             opacity: 0;
             height: 0;
@@ -378,6 +387,30 @@
             margin: inherit;
             overflow: visible;
             transition: all 0.3s ease;
+        }
+        
+        /* Classes pour les différentes versions de factures */
+        /* Masquer la colonne ACTION dans les deux versions */
+        .company-version .action-column,
+        .client-version .action-column {
+            display: none;
+        }
+        
+        .company-version .order-table th:nth-child(4),
+        .company-version .order-table td:nth-child(4),
+        .client-version .order-table th:nth-child(4),
+        .client-version .order-table td:nth-child(4) {
+            display: none;
+        }
+        
+        /* Masquer Montant Original et Bénéfices seulement dans la version client */
+        .client-version .profit-info {
+            display: none;
+        }
+        
+        /* Style spécifique pour la facture société */
+        .company-version .profit-info {
+            display: flex;
         }
     </style>
 </head>
@@ -467,7 +500,7 @@
                             <th>ID</th>
                             <th>COMMANDE</th>
                             <th>PRIX</th>
-                            <th>ACTION</th>
+                            <th class="action-column">ACTION</th>
                         </tr>
                     </thead>
                     <tbody id="orderItems">
@@ -485,20 +518,24 @@
                         <span class="summary-value" id="totalAmount">0.00 $</span>
                     </div>
                     
-                    <div class="summary-row">
+                    <div class="summary-row profit-info">
                         <span class="summary-label">Montant Original :</span>
                         <span class="summary-value" id="originalAmount">0.00 $</span>
                     </div>
                     
-                    <div class="summary-row total-row profit-row">
+                    <div class="summary-row total-row profit-row profit-info">
                         <span class="summary-label">Bénéfices :</span>
                         <span class="summary-value" id="profitAmount">0.00 $</span>
                     </div>
                 </div>
                 
                 <div class="action-buttons" id="actionButtons">
-                    <button class="btn btn-download" id="downloadBtn">
-                        <i class="fas fa-download"></i> Télécharger en PNG
+                    <button class="btn btn-company" id="downloadCompanyBtn">
+                        <i class="fas fa-building"></i> Facture Société
+                    </button>
+                    
+                    <button class="btn btn-client" id="downloadClientBtn">
+                        <i class="fas fa-user"></i> Facture Client
                     </button>
                     
                     <button class="btn btn-copy" id="copyBtn">
@@ -521,23 +558,23 @@
         // Configuration basée sur les pages pistol.html, shootgun.html et other.html
         const CONFIGURED_ITEMS = [
             // Pistolets (page pistol.html)
-            {id: "PISTOL-001", name: "HK USP", cost: 2000, price: 5000},
-            {id: "PISTOL-002", name: "CZ 75", cost: 1800, price: 5000},
-            {id: "PISTOL-003", name: "Walther P99", cost: 2200, price: 5000},
-            {id: "PISTOL-004", name: "MK 23", cost: 2500, price: 5000},
-            {id: "PISTOL-005", name: "Colt M45", cost: 2300, price: 5000},
-            {id: "PISTOL-006", name: "FNP-45", cost: 2400, price: 5000},
-            {id: "PISTOL-007", name: "Beretta M9", cost: 1900, price: 5000},
-            {id: "PISTOL-008", name: "Five-seveN MK2", cost: 2600, price: 5000},
-            {id: "PISTOL-009", name: "Kimber Night Warrior (KNW)", cost: 2800, price: 5000},
-            {id: "PISTOL-010", name: "King Cobra", cost: 3000, price: 5000},
-            {id: "PISTOL-011", name: "Smith & Wesson Model 659", cost: 2100, price: 5000},
-            {id: "PISTOL-012", name: "Desert Eagle", cost: 3500, price: 5000},
-            {id: "PISTOL-013", name: "Glock 17", cost: 1800, price: 5000},
-            {id: "PISTOL-014", name: "Glock 19", cost: 1900, price: 5000},
-            {id: "PISTOL-015", name: "SIG SAUER P320 M18", cost: 2200, price: 5000},
-            {id: "PISTOL-016", name: "MR‑96", cost: 3200, price: 5000},
-            {id: "PISTOL-017", name: "MR‑73", cost: 3100, price: 5000},
+            {id: "PISTOL-001", name: "HK USP", cost: 4500, price: 5000},
+            {id: "PISTOL-002", name: "CZ 75", cost: 4500, price: 5000},
+            {id: "PISTOL-003", name: "Walther P99", cost: 4500, price: 5000},
+            {id: "PISTOL-004", name: "MK 23", cost: 4500, price: 5000},
+            {id: "PISTOL-005", name: "Colt M45", cost: 4500, price: 5000},
+            {id: "PISTOL-006", name: "FNP-45", cost: 4500, price: 5000},
+            {id: "PISTOL-007", name: "Beretta M9", cost: 4500, price: 5000},
+            {id: "PISTOL-008", name: "Five-seveN MK2", cost: 4500, price: 5000},
+            {id: "PISTOL-009", name: "Kimber Night Warrior (KNW)", cost: 4500, price: 5000},
+            {id: "PISTOL-010", name: "King Cobra", cost: 4500, price: 5000},
+            {id: "PISTOL-011", name: "Smith & Wesson Model 659", cost: 4500, price: 5000},
+            {id: "PISTOL-012", name: "Desert Eagle", cost: 4500, price: 5000},
+            {id: "PISTOL-013", name: "Glock 17", cost: 4500, price: 5000},
+            {id: "PISTOL-014", name: "Glock 19", cost: 4500, price: 5000},
+            {id: "PISTOL-015", name: "SIG SAUER P320 M18", cost: 4500, price: 5000},
+            {id: "PISTOL-016", name: "MR‑96", cost: 4500, price: 5000},
+            {id: "PISTOL-017", name: "MR‑73", cost: 4500, price: 5000},
             
             // Fusils à pompe (page shootgun.html)
             {id: "SG-001", name: "Remington M870", cost: 6000, price: 13200},
@@ -734,7 +771,7 @@
                     <td>${item.id}</td>
                     <td>${item.name}</td>
                     <td>${item.price}$</td>
-                    <td>
+                    <td class="action-column">
                         <button class="delete-btn" onclick="removeFromOrder(${index})">
                             <i class="fas fa-trash"></i>
                         </button>
@@ -770,18 +807,26 @@
             document.getElementById('profitAmount').textContent = profit + "$";
         }
         
-        // Télécharger la fiche en PNG
-        document.getElementById('downloadBtn').addEventListener('click', function() {
+        // Fonction pour générer une facture (version société ou client)
+        function generateInvoice(invoiceType) {
             if (currentOrder.length === 0) {
-                alert("La commande est vide. Veuillez ajouter des articles avant de télécharger.");
+                alert("La commande est vide. Veuillez ajouter des articles avant de générer une facture.");
                 return;
             }
             
-            // Désactiver le bouton pendant la génération
-            const downloadBtn = document.getElementById('downloadBtn');
-            const originalText = downloadBtn.innerHTML;
-            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération en cours...';
-            downloadBtn.disabled = true;
+            // Désactiver les boutons pendant la génération
+            const companyBtn = document.getElementById('downloadCompanyBtn');
+            const clientBtn = document.getElementById('downloadClientBtn');
+            const originalCompanyText = companyBtn.innerHTML;
+            const originalClientText = clientBtn.innerHTML;
+            
+            if (invoiceType === 'company') {
+                companyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération...';
+                companyBtn.disabled = true;
+            } else {
+                clientBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération...';
+                clientBtn.disabled = true;
+            }
             
             // Masquer les boutons d'action avant la capture
             const actionButtons = document.getElementById('actionButtons');
@@ -789,17 +834,28 @@
             actionButtons.classList.add('capture-hidden');
             downloadInfo.classList.add('capture-hidden');
             
+            // Ajouter la classe pour masquer les informations sensibles
+            const orderCard = document.getElementById('orderCard');
+            if (invoiceType === 'client') {
+                orderCard.classList.add('client-version');
+                orderCard.classList.remove('company-version');
+            } else {
+                orderCard.classList.add('company-version');
+                orderCard.classList.remove('client-version');
+            }
+            
             // Petite pause pour s'assurer que le DOM a été mis à jour
             setTimeout(() => {
                 // Capturer la fiche de commande
-                const orderCard = document.getElementById('orderCard');
-                
                 html2canvas(orderCard, {
                     scale: 2, // Meilleure qualité
                     backgroundColor: '#ffffff',
                     useCORS: true,
                     logging: false
                 }).then(canvas => {
+                    // Retirer les classes de version
+                    orderCard.classList.remove('client-version', 'company-version');
+                    
                     // Réafficher les boutons d'action
                     actionButtons.classList.remove('capture-hidden');
                     downloadInfo.classList.remove('capture-hidden');
@@ -807,29 +863,48 @@
                     // Créer un lien de téléchargement
                     const link = document.createElement('a');
                     const clientName = document.getElementById('displayClientName').textContent.replace(/\s+/g, '_').substring(0, 20);
-                    link.download = `commande_${clientName}_${new Date().toISOString().slice(0,10)}.png`;
+                    const type = invoiceType === 'company' ? 'societe' : 'client';
+                    link.download = `facture_${type}_${clientName}_${new Date().toISOString().slice(0,10)}.png`;
                     link.href = canvas.toDataURL('image/png');
                     link.click();
                     
-                    // Réactiver le bouton
-                    downloadBtn.innerHTML = originalText;
-                    downloadBtn.disabled = false;
+                    // Réactiver les boutons
+                    companyBtn.innerHTML = originalCompanyText;
+                    clientBtn.innerHTML = originalClientText;
+                    companyBtn.disabled = false;
+                    clientBtn.disabled = false;
                     
                     // Afficher un message de confirmation
-                    alert("Fiche téléchargée avec succès !");
+                    const typeText = invoiceType === 'company' ? 'Société' : 'Client';
+                    alert(`Facture ${typeText} téléchargée avec succès !`);
                 }).catch(error => {
                     console.error('Erreur lors de la capture:', error);
                     alert("Une erreur est survenue lors du téléchargement. Veuillez réessayer.");
+                    
+                    // Retirer les classes de version en cas d'erreur
+                    orderCard.classList.remove('client-version', 'company-version');
                     
                     // Réafficher les boutons d'action en cas d'erreur
                     actionButtons.classList.remove('capture-hidden');
                     downloadInfo.classList.remove('capture-hidden');
                     
-                    // Réactiver le bouton
-                    downloadBtn.innerHTML = originalText;
-                    downloadBtn.disabled = false;
+                    // Réactiver les boutons
+                    companyBtn.innerHTML = originalCompanyText;
+                    clientBtn.innerHTML = originalClientText;
+                    companyBtn.disabled = false;
+                    clientBtn.disabled = false;
                 });
             }, 100); // Court délai pour s'assurer que le DOM a été mis à jour
+        }
+        
+        // Télécharger la facture pour la société
+        document.getElementById('downloadCompanyBtn').addEventListener('click', function() {
+            generateInvoice('company');
+        });
+        
+        // Télécharger la facture pour le client
+        document.getElementById('downloadClientBtn').addEventListener('click', function() {
+            generateInvoice('client');
         });
         
         // Copier la fiche dans le presse-papier
