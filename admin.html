@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Fiche Commande</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4a6fa5;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .order-section, .details-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #4a6fa5;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input, select, button {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4a6fa5;
+            box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+        }
+        
+        .btn {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        
+        .btn:hover {
+            background-color: #3a5a8a;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-download {
+            background-color: #9b59b6;
+            margin-top: 15px;
+        }
+        
+        .btn-download:hover {
+            background-color: #8e44ad;
+        }
+        
+        .btn-copy {
+            background-color: #3498db;
+            margin-top: 10px;
+        }
+        
+        .btn-copy:hover {
+            background-color: #2980b9;
+        }
+        
+        .items-list {
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        
+        .item-info {
+            font-size: 0.9rem;
+        }
+        
+        .item-id {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .item-price {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1rem;
+            width: auto;
+            padding: 0 5px;
+        }
+        
+        .delete-btn:hover {
+            color: #c0392b;
+        }
+        
+        .order-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e8ed;
+            position: relative;
+        }
+        
+        .order-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #ddd;
+        }
+        
+        .order-title {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .order-date {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+        
+        .client-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4a6fa5;
+        }
+        
+        .info-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .order-table th {
+            background-color: #f1f7ff;
+            color: #2c3e50;
+            font-weight: 600;
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .order-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .order-summary {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px dashed #ddd;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .summary-label {
+            color: #555;
+        }
+        
+        .summary-value {
+            font-weight: 600;
+        }
+        
+        .total-row {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            border-top: 2px solid #eee;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        
+        .profit-row {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .no-items {
+            text-align: center;
+            color: #95a5a6;
+            font-style: italic;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .download-info {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4a6fa5;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .price-info {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+        
+        .config-note {
+            background-color: #f1f8ff;
+            border: 1px solid #d1e7ff;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        /* Classes pour masquer les boutons lors de la capture */
+        .capture-hidden {
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .capture-visible {
+            opacity: 1;
+            height: auto;
+            padding: inherit;
+            margin: inherit;
+            overflow: visible;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-file-invoice"></i> Générateur de Fiche Commande LibertyArm</h1>
+            <p>Créez automatiquement une fiche de commande avec calcul des bénéfices</p>
+        </div>
+        
+        <div class="order-section">
+            <h2 class="section-title"><i class="fas fa-shopping-cart"></i> Création de Commande</h2>
+            
+            <div class="instructions">
+                <h3>Instructions :</h3>
+                <ul>
+                    <li>Saisissez les informations de la commande</li>
+                    <li>Sélectionnez un article dans la liste disponible</li>
+                    <li>Ajoutez les articles à la commande</li>
+                    <li>La fiche se génère automatiquement à droite</li>
+                </ul>
+            </div>
+            
+            <div class="config-note">
+                <i class="fas fa-lock"></i> Catalogue d'articles fixe - Configuration administrateur
+            </div>
+            
+            <div class="form-group">
+                <label for="clientName">Nom & Prénom du Client</label>
+                <input type="text" id="clientName" placeholder="Ex: Jean Dupont">
+            </div>
+            
+            <div class="form-group">
+                <label for="orderDate">Date & Heure de la Commande</label>
+                <input type="datetime-local" id="orderDate">
+            </div>
+            
+            <div class="form-group">
+                <label for="sellerName">Nom du Vendeur</label>
+                <input type="text" id="sellerName" placeholder="Ex: Marie Martin">
+            </div>
+            
+            <div class="form-group">
+                <label for="itemSelect">Sélectionner un article</label>
+                <select id="itemSelect">
+                    <option value="">-- Sélectionner un article --</option>
+                </select>
+            </div>
+            
+            <button class="btn" id="addToOrderBtn">
+                <i class="fas fa-cart-plus"></i> Ajouter à la commande
+            </button>
+            
+            <h3 class="section-title" style="margin-top: 30px; font-size: 1.2rem;">
+                <i class="fas fa-boxes"></i> Articles disponibles
+            </h3>
+            
+            <div class="items-list" id="itemsList">
+                <!-- Les articles seront chargés ici dynamiquement -->
+            </div>
+        </div>
+        
+        <div class="details-section">
+            <h2 class="section-title"><i class="fas fa-file-alt"></i> DÉTAILS DE LA COMMANDE</h2>
+            
+            <div class="order-card" id="orderCard">
+                <div class="order-header">
+                    <h2 class="order-title">DÉTAILS DE LA COMMANDE</h2>
+                    <div class="order-date" id="orderDateDisplay">Date non définie</div>
+                </div>
+                
+                <div class="client-info">
+                    <div class="info-box">
+                        <div class="info-label">Nom & Prénom</div>
+                        <div class="info-value" id="displayClientName">NOM DU CLIENT</div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-label">Vendeur</div>
+                        <div class="info-value" id="displaySellerName">NOM DU VENDEUR</div>
+                    </div>
+                </div>
+                
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>COMMANDE</th>
+                            <th>PRIX</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderItems">
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: #95a5a6; padding: 30px;">
+                                Aucun article dans la commande
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span class="summary-label">Montant Total :</span>
+                        <span class="summary-value" id="totalAmount">0.00 $</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Montant Original :</span>
+                        <span class="summary-value" id="originalAmount">0.00 $</span>
+                    </div>
+                    
+                    <div class="summary-row total-row profit-row">
+                        <span class="summary-label">Bénéfices :</span>
+                        <span class="summary-value" id="profitAmount">0.00 $</span>
+                    </div>
+                </div>
+                
+                <div class="action-buttons" id="actionButtons">
+                    <button class="btn btn-download" id="downloadBtn">
+                        <i class="fas fa-download"></i> Télécharger en PNG
+                    </button>
+                    
+                    <button class="btn btn-copy" id="copyBtn">
+                        <i class="fas fa-copy"></i> Copier dans presse-papier
+                    </button>
+                </div>
+                
+                <div class="download-info" id="downloadInfo">
+                    <i class="fas fa-info-circle"></i> Le téléchargement peut prendre quelques secondes
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bibliothèque html2canvas pour la capture d'écran -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <script>
+        // CONFIGURATION FIXE - NON MODIFIABLE PAR LES EMPLOYÉS
+        // Configuration basée sur les pages pistol.html, shootgun.html et other.html
+        const CONFIGURED_ITEMS = [
+            // Pistolets (page pistol.html)
+            {id: "PISTOL-001", name: "HK USP", cost: 2000, price: 5000},
+            {id: "PISTOL-002", name: "CZ 75", cost: 1800, price: 5000},
+            {id: "PISTOL-003", name: "Walther P99", cost: 2200, price: 5000},
+            {id: "PISTOL-004", name: "MK 23", cost: 2500, price: 5000},
+            {id: "PISTOL-005", name: "Colt M45", cost: 2300, price: 5000},
+            {id: "PISTOL-006", name: "FNP-45", cost: 2400, price: 5000},
+            {id: "PISTOL-007", name: "Beretta M9", cost: 1900, price: 5000},
+            {id: "PISTOL-008", name: "Five-seveN MK2", cost: 2600, price: 5000},
+            {id: "PISTOL-009", name: "Kimber Night Warrior (KNW)", cost: 2800, price: 5000},
+            {id: "PISTOL-010", name: "King Cobra", cost: 3000, price: 5000},
+            {id: "PISTOL-011", name: "Smith & Wesson Model 659", cost: 2100, price: 5000},
+            {id: "PISTOL-012", name: "Desert Eagle", cost: 3500, price: 5000},
+            {id: "PISTOL-013", name: "Glock 17", cost: 1800, price: 5000},
+            {id: "PISTOL-014", name: "Glock 19", cost: 1900, price: 5000},
+            {id: "PISTOL-015", name: "SIG SAUER P320 M18", cost: 2200, price: 5000},
+            {id: "PISTOL-016", name: "MR‑96", cost: 3200, price: 5000},
+            {id: "PISTOL-017", name: "MR‑73", cost: 3100, price: 5000},
+            
+            // Fusils à pompe (page shootgun.html)
+            {id: "SG-001", name: "Remington M870", cost: 6000, price: 13200},
+            {id: "SG-002", name: "Mossberg 590", cost: 5500, price: 13200},
+            {id: "SG-003", name: "Mossberg 500", cost: 5000, price: 13200},
+            {id: "SG-004", name: "SP AS-12", cost: 7000, price: 13200},
+            {id: "SG-005", name: "TOZ-194M", cost: 4500, price: 13200},
+            {id: "SG-006", name: "Benelli Nova", cost: 6500, price: 13200},
+            
+            // Accessoires (page other.html)
+            {id: "ACC-001", name: "Munitions Revolver .357", cost: 30, price: 100},
+            {id: "ACC-002", name: "Sac à dos de transport", cost: 20, price: 60},
+            {id: "ACC-003", name: "Carte clé USB", cost: 2, price: 6},
+            {id: "ACC-004", name: "Munitions de pompe (12 gauge)", cost: 60, price: 200},
+            {id: "ACC-005", name: "Munitions de SMG", cost: 60, price: 200},
+            {id: "ACC-006", name: "Munitions de fusil d'assaut", cost: 60, price: 200},
+            {id: "ACC-007", name: "Munitions de sniper", cost: 100, price: 300},
+
+            // Pistolets-mitrailleurs (page smg.html)
+            {id: "SMG-001", name: "B&T MP9", cost: 4000, price: 10000},
+            {id: "SMG-002", name: "HK MP7", cost: 4000, price: 10000},
+            {id: "SMG-003", name: "HK MP5A4", cost: 6000, price: 13200},
+            {id: "SMG-004", name: "IMI UZI", cost: 3800, price: 9500},
+            {id: "SMG-005", name: "KRISS Vector", cost: 6000, price: 13200},
+            
+            // Fusils d'assaut (page assault.html)
+            {id: "ASSAULT-001", name: "F90 MBR", cost: 8000, price: 16000},
+            {id: "ASSAULT-002", name: "MK18 MOD 1", cost: 8500, price: 17000},
+            {id: "ASSAULT-003", name: "MK18 Mod 1 CQBR", cost: 8000, price: 16000},
+            {id: "ASSAULT-004", name: "AN‑94", cost: 8000, price: 16000},
+            {id: "ASSAULT-005", name: "Remington ACR", cost: 8000, price: 16000},
+            {id: "ASSAULT-006", name: "M4A1", cost: 8000, price: 16000},
+            {id: "ASSAULT-007", name: "SCAR‑H SSR", cost: 12000, price: 23000},
+            {id: "ASSAULT-008", name: "SCAR‑L", cost: 8000, price: 16000},
+            {id: "ASSAULT-009", name: "HK416", cost: 8000, price: 16000},
+            {id: "ASSAULT-010", name: "AR‑15", cost: 8000, price: 16000},
+            {id: "ASSAULT-011", name: "CZ 805 Bren", cost: 8000, price: 16000},
+            {id: "ASSAULT-012", name: "IMI Galil", cost: 8000, price: 16000},
+            {id: "ASSAULT-013", name: "FN FAL", cost: 8000, price: 16000},
+            {id: "ASSAULT-014", name: "AK‑400", cost: 20000, price: 40000},
+            
+            // Fusils de précision (page sniper.html)
+            {id: "SNIPER-001", name: "Kel-Tec RFB", cost: 30000, price: 60000},
+            {id: "SNIPER-002", name: "M40A1", cost: 30000, price: 60000},
+            {id: "SNIPER-003", name: "M82A1 CQ", cost: 30000, price: 60000},
+            {id: "SNIPER-004", name: "SKS", cost: 30000, price: 60000},
+            {id: "SNIPER-005", name: "Remington M24A1 SWS", cost: 30000, price: 60000},
+            {id: "SNIPER-006", name: "Barrett M98B", cost: 30000, price: 60000},
+            {id: "SNIPER-007", name: "Accuracy International AWM", cost: 30000, price: 60000}
+        ];
+        
+        // Données stockées
+        let currentOrder = [];
+        const currencySymbol = "$";
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Définir la date et heure actuelles
+            const now = new Date();
+            const localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+            document.getElementById('orderDate').value = localDateTime;
+            updateOrderDateDisplay();
+            
+            // Charger les articles depuis la configuration fixe
+            loadConfiguredItems();
+        });
+        
+        // Charger les articles configurés
+        function loadConfiguredItems() {
+            // Mettre à jour la liste déroulante
+            updateItemsSelect();
+            
+            // Mettre à jour la liste visuelle
+            updateItemsList();
+        }
+        
+        // Mettre à jour la liste des articles disponibles
+        function updateItemsList() {
+            const itemsList = document.getElementById('itemsList');
+            
+            if (CONFIGURED_ITEMS.length === 0) {
+                itemsList.innerHTML = '<div class="no-items">Aucun article disponible</div>';
+                return;
+            }
+            
+            let html = '';
+            CONFIGURED_ITEMS.forEach(item => {
+                html += `
+                <div class="item-row">
+                    <div class="item-info">
+                        <span class="item-id">${item.id}</span> - ${item.name}
+                        <div class="price-info">
+                            Achat: ${item.cost}$ | Vente: ${item.price}$
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+            
+            itemsList.innerHTML = html;
+        }
+        
+        // Mettre à jour la liste déroulante des articles
+        function updateItemsSelect() {
+            const itemSelect = document.getElementById('itemSelect');
+            itemSelect.innerHTML = '<option value="">-- Sélectionner un article --</option>';
+            
+            CONFIGURED_ITEMS.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = `${item.id} - ${item.name} (${item.price}$)`;
+                itemSelect.appendChild(option);
+            });
+        }
+        
+        // Mettre à jour l'affichage de la date
+        function updateOrderDateDisplay() {
+            const dateInput = document.getElementById('orderDate').value;
+            if (dateInput) {
+                const date = new Date(dateInput);
+                const options = { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                document.getElementById('orderDateDisplay').textContent = 
+                    date.toLocaleDateString('fr-FR', options);
+            }
+        }
+        
+        // Écouter les changements de date
+        document.getElementById('orderDate').addEventListener('change', updateOrderDateDisplay);
+        
+        // Ajouter un article à la commande
+        document.getElementById('addToOrderBtn').addEventListener('click', function() {
+            const clientName = document.getElementById('clientName').value.trim();
+            const sellerName = document.getElementById('sellerName').value.trim();
+            const selectedItemId = document.getElementById('itemSelect').value;
+            
+            if (!clientName || !sellerName) {
+                alert("Veuillez saisir le nom du client et du vendeur");
+                return;
+            }
+            
+            if (!selectedItemId) {
+                alert("Veuillez sélectionner un article à ajouter");
+                return;
+            }
+            
+            // Mettre à jour les informations du client et du vendeur
+            document.getElementById('displayClientName').textContent = clientName;
+            document.getElementById('displaySellerName').textContent = sellerName;
+            
+            // Trouver l'article sélectionné
+            const selectedItem = CONFIGURED_ITEMS.find(item => item.id === selectedItemId);
+            
+            // Ajouter l'article à la commande
+            currentOrder.push({
+                id: selectedItem.id,
+                name: selectedItem.name,
+                price: selectedItem.price,
+                cost: selectedItem.cost
+            });
+            
+            updateOrderTable();
+            calculateTotals();
+            
+            // Réinitialiser la sélection
+            document.getElementById('itemSelect').selectedIndex = 0;
+        });
+        
+        // Mettre à jour le tableau de commande
+        function updateOrderTable() {
+            const orderItems = document.getElementById('orderItems');
+            
+            if (currentOrder.length === 0) {
+                orderItems.innerHTML = `
+                <tr>
+                    <td colspan="4" style="text-align: center; color: #95a5a6; padding: 30px;">
+                        Aucun article dans la commande
+                    </td>
+                </tr>
+                `;
+                return;
+            }
+            
+            let html = '';
+            currentOrder.forEach((item, index) => {
+                html += `
+                <tr>
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.price}$</td>
+                    <td>
+                        <button class="delete-btn" onclick="removeFromOrder(${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                `;
+            });
+            
+            orderItems.innerHTML = html;
+        }
+        
+        // Supprimer un article de la commande
+        function removeFromOrder(index) {
+            currentOrder.splice(index, 1);
+            updateOrderTable();
+            calculateTotals();
+        }
+        
+        // Calculer les totaux
+        function calculateTotals() {
+            let totalAmount = 0;
+            let originalAmount = 0;
+            
+            currentOrder.forEach(item => {
+                totalAmount += item.price;
+                originalAmount += item.cost;
+            });
+            
+            const profit = totalAmount - originalAmount;
+            
+            document.getElementById('totalAmount').textContent = totalAmount + "$";
+            document.getElementById('originalAmount').textContent = originalAmount + "$";
+            document.getElementById('profitAmount').textContent = profit + "$";
+        }
+        
+        // Télécharger la fiche en PNG
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            if (currentOrder.length === 0) {
+                alert("La commande est vide. Veuillez ajouter des articles avant de télécharger.");
+                return;
+            }
+            
+            // Désactiver le bouton pendant la génération
+            const downloadBtn = document.getElementById('downloadBtn');
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération en cours...';
+            downloadBtn.disabled = true;
+            
+            // Masquer les boutons d'action avant la capture
+            const actionButtons = document.getElementById('actionButtons');
+            const downloadInfo = document.getElementById('downloadInfo');
+            actionButtons.classList.add('capture-hidden');
+            downloadInfo.classList.add('capture-hidden');
+            
+            // Petite pause pour s'assurer que le DOM a été mis à jour
+            setTimeout(() => {
+                // Capturer la fiche de commande
+                const orderCard = document.getElementById('orderCard');
+                
+                html2canvas(orderCard, {
+                    scale: 2, // Meilleure qualité
+                    backgroundColor: '#ffffff',
+                    useCORS: true,
+                    logging: false
+                }).then(canvas => {
+                    // Réafficher les boutons d'action
+                    actionButtons.classList.remove('capture-hidden');
+                    downloadInfo.classList.remove('capture-hidden');
+                    
+                    // Créer un lien de téléchargement
+                    const link = document.createElement('a');
+                    const clientName = document.getElementById('displayClientName').textContent.replace(/\s+/g, '_').substring(0, 20);
+                    link.download = `commande_${clientName}_${new Date().toISOString().slice(0,10)}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Réactiver le bouton
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.disabled = false;
+                    
+                    // Afficher un message de confirmation
+                    alert("Fiche téléchargée avec succès !");
+                }).catch(error => {
+                    console.error('Erreur lors de la capture:', error);
+                    alert("Une erreur est survenue lors du téléchargement. Veuillez réessayer.");
+                    
+                    // Réafficher les boutons d'action en cas d'erreur
+                    actionButtons.classList.remove('capture-hidden');
+                    downloadInfo.classList.remove('capture-hidden');
+                    
+                    // Réactiver le bouton
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.disabled = false;
+                });
+            }, 100); // Court délai pour s'assurer que le DOM a été mis à jour
+        });
+        
+        // Copier la fiche dans le presse-papier
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            if (currentOrder.length === 0) {
+                alert("La commande est vide. Veuillez ajouter des articles avant de copier.");
+                return;
+            }
+            
+            // Créer une représentation textuelle de la fiche
+            const clientName = document.getElementById('displayClientName').textContent;
+            const orderDate = document.getElementById('orderDateDisplay').textContent;
+            const sellerName = document.getElementById('displaySellerName').textContent;
+            const totalAmount = document.getElementById('totalAmount').textContent;
+            const originalAmount = document.getElementById('originalAmount').textContent;
+            const profitAmount = document.getElementById('profitAmount').textContent;
+            
+            let orderDetails = "🧾 DÉTAILS DE LA COMMANDE\n\n";
+            orderDetails += `Nom & Prénom : ${clientName}\n`;
+            orderDetails += `Date & Heure : ${orderDate}\n`;
+            orderDetails += `Vendeur : ${sellerName}\n\n`;
+            orderDetails += "Commande :\n";
+            orderDetails += "ID | COMMANDE | PRIX\n";
+            orderDetails += "---|----------|------\n";
+            
+            currentOrder.forEach(item => {
+                orderDetails += `${item.id} | ${item.name} | ${item.price}$\n`;
+            });
+            
+            orderDetails += `\nMontant Total : ${totalAmount}\n`;
+            orderDetails += `Montant Original : ${originalAmount}\n`;
+            orderDetails += `Bénéfices : ${profitAmount}\n\n`;
+            orderDetails += `Généré le ${new Date().toLocaleDateString('fr-FR')}`;
+            
+            // Copier dans le presse-papier
+            navigator.clipboard.writeText(orderDetails)
+                .then(() => {
+                    // Afficher un message de confirmation
+                    const copyBtn = document.getElementById('copyBtn');
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copié !';
+                    copyBtn.style.backgroundColor = '#27ae60';
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.style.backgroundColor = '';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Erreur lors de la copie:', err);
+                    alert("Impossible de copier dans le presse-papier. Vous pouvez sélectionner et copier le texte manuellement.");
+                });
+        });
+        
+        // Raccourcis clavier
+        document.addEventListener('keydown', function(e) {
+            // Entrée pour ajouter à la commande
+            if (e.key === 'Enter' && document.getElementById('itemSelect').matches(':focus')) {
+                document.getElementById('addToOrderBtn').click();
+            }
+        });
+    </script>
+</body>
+</html>
